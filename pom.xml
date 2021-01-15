@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>captfudgecake</groupId>
-  <artifactId>Vote tally bot</artifactId>
+  <artifactId>VoteTallyBot</artifactId>
   <version>1.0</version>
 
   <name>Vote tally bot</name>
@@ -14,22 +14,24 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
+
+    <dependency>
+    <groupId>org.javacord</groupId>
+    <artifactId>javacord</artifactId>
+    <version>3.1.2</version>
+    <type>pom</type>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.javacord</groupId>
-      <artifactId>javacord</artifactId>
-      <version>3.1.2</version>
-      <type>pom</type>
     </dependency>
   </dependencies>
 
