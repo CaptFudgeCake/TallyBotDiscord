@@ -5,7 +5,7 @@ import org.javacord.api.*;
  * Hello world!
  *
  */
-public class App 
+public class TallyBot 
 {
     public static void main( String[] args )
     {
