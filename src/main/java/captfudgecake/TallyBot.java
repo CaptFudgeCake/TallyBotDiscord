@@ -1,10 +1,15 @@
 package captfudgecake;
 
+import java.time.Instant;
+import java.time.Period;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 import org.javacord.api.*;
 import org.javacord.api.entity.channel.Channel;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageSet;
 /**
  * Hello world!
  *
@@ -39,8 +44,8 @@ public class TallyBot
     public void addPingPong(){
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!ping")) {
-                System.out.println(event.getChannel().getId());
-                event.getChannel().sendMessage("Pong!");
+                MessageSet test = getWeeksMessagesWithImages();
+                test.forEach(m -> m.toMessageBuilder().send(foodPicsChannel));
                 sendMessageToFoodPics("Test message, please ignore");
             }
         });
@@ -48,5 +53,12 @@ public class TallyBot
 
     public void sendMessageToFoodPics(String message){
         foodPicsChannel.sendMessage(message);
+    }
+
+    private MessageSet getWeeksMessagesWithImages(){
+        Instant now = Instant.now();
+        Instant weekAgo = now.minus(Period.ofDays(7));
+        Predicate<Message> messageCondition = m -> m.getCreationTimestamp().isAfter(weekAgo) && m.getAttachments().size() > 0;
+        return foodPicsChannel.getMessagesUntil(messageCondition).join();
     }
 }
