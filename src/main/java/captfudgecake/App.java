@@ -1,4 +1,4 @@
-package CaptFudgeCake;
+package captfudgecake;
 
 /**
  * Hello world!

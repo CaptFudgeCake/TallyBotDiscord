@@ -1,4 +1,4 @@
-package CaptFudgeCake;
+package captfudgecake;
 
 import static org.junit.Assert.assertTrue;
 
